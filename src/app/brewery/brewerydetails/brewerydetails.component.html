@@ -1,0 +1,88 @@
+<div class="card" *ngIf="breweryDetail">
+    <div class="card-header">
+        Brewery Detail
+    </div>
+
+    <div class="row">
+        <div class="col-md-4">
+            <span>
+                <b>Brewery Name:</b>
+            </span>
+            <span>
+                {{breweryDetail.name?breweryDetail.name:'N/A'}}
+            </span>
+        </div>
+        <div class="col-md-4">
+            <span>
+                <b>Brewery URL:</b>
+            </span>
+            <a href="{{breweryDetail.website_url?breweryDetail.website_url:''}}"
+                target="_blank">{{breweryDetail.website_url?breweryDetail.website_url:'N/A'}}</a>
+        </div>
+        <div class="col-md-4">
+            <span>
+                <b>Street:</b>
+            </span>
+            <span>
+                {{breweryDetail.street?breweryDetail.street:'N/A'}}
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <span>
+                <b>City:</b>
+            </span>
+            <span>
+                {{breweryDetail.city?breweryDetail.city:'N/A'}}
+            </span>
+        </div>
+        <div class="col-md-4">
+            <span>
+                <b>State/Province:</b>
+            </span>
+            <span>
+                {{breweryDetail.state?breweryDetail.state:'N/A'}}
+            </span>
+        </div>
+        <div class="col-md-4">
+            <span>
+                <b>Postal Code:</b>
+            </span>
+            <span>
+                {{breweryDetail.postal_code?breweryDetail.postal_code:'N/A'}}
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <span>
+                <b>Country:</b>
+            </span>
+            <span>
+                {{breweryDetail.country?breweryDetail.country:'N/A'}}
+            </span>
+        </div>
+        <div class="col-md-4">
+            <span>
+                <b>Latitude:</b>
+            </span>
+            <span>
+                {{breweryDetail.latitude?breweryDetail.latitude:'N/A'}}
+            </span>
+        </div>
+        <div class="col-md-4">
+            <span>
+                <b>Longitude:</b>
+            </span>
+            <span>
+                {{breweryDetail.longitude?breweryDetail.longitude:'N/A'}}
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <p-gmap [options]="options" [style]="{'width':'100%','height':'320px'}"></p-gmap>
+        </div>
+    </div>
+</div>

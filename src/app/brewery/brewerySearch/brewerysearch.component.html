@@ -1,0 +1,80 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header customheader">
+            Global Search
+        </div>
+        <div class="card-body">
+            <div class="col-md-6" style="text-align: right;">
+                <span class="p-fluid">
+                    <p-autoComplete [(ngModel)]="selectedBrewery" (onSelect)="dropdownValueSelected()" [showEmptyMessage]="true"
+                        [suggestions]="filteredBreweries" (completeMethod)="filterBrewery($event)" field="name"
+                        placeholder="Type to get suggestions" minlength="1" [delay]="500">
+                    </p-autoComplete>
+                </span>
+            </div>
+        </div>
+    </div><br /><br />
+
+    <div class="card">
+        <div class="card-header customheader">
+            Brewery Details
+        </div>
+        <div class="card-body">
+            <div class="card">
+                <div class="card-header customheader">
+                    Filter
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <input type="text" [(ngModel)]="searchFields.name" placeholder="Enter Brewery Name"
+                                class="form-control" />
+                        </div>
+                        <div class="col-md-3">
+                            <input type="text" [(ngModel)]="searchFields.city" placeholder="Enter City Name"
+                                class="form-control" />
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-primary" (click)="filterByCriteria()">Go</button>
+                        </div>
+                    </div>
+                </div>
+            </div><br />
+            <p-table [value]="breweryList" [paginator]="true" [rows]="15" [rowsPerPageOptions]="['15', '30', '50']">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th pSortableColumn="code">Brewery Name <p-sortIcon field="code"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="name">Type <p-sortIcon field="name"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="category">City <p-sortIcon field="category"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="quantity">Country <p-sortIcon field="quantity"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="price">Link to Website URL <p-sortIcon field="price"></p-sortIcon>
+                        </th>
+                        <th pSortableColumn="price">Phone Number <p-sortIcon field="price"></p-sortIcon>
+                        </th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-brewery>
+                    <tr>
+                        <td><a [routerLink]="['/breweryDetails', brewery.id]">{{brewery.name}}</a></td>
+                        <td>{{brewery.brewery_type}}</td>
+                        <td>{{brewery.city}}</td>
+                        <td>{{brewery.country}}</td>
+                        <td>{{brewery.website_url}}</td>
+                        <td>{{brewery.phone}}</td>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="emptymessage" let-columns>
+                    <tr>
+                        <td [attr.colspan]="columns?.length">
+                            No records found
+                        </td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </div>
+    </div>
+</div>
